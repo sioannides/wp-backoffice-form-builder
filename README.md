@@ -63,9 +63,9 @@
 	                
 	            //multiselect
 	            array(
-	                "name" => "Top Menu Categories",
-	                "desc" => "Categories appearing in the top menu",
-	                "id" => $shortname."_top_categories[]",
+	                "name" => "My Multiselect",
+	                "desc" => "My Multiselect Description",
+	                "id" => $shortname."_my_multiselect",
 	                "type" => "multiselect",
 	                "size" => 10,
 	                "options" => array(
