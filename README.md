@@ -107,13 +107,15 @@
     if ((isset($_GET['page']))&&( '/'.$_GET['page'] == __FILE__ )) {
         if ((isset($_REQUEST['action']))&&( 'save' == $_REQUEST['action'] )) {
             foreach ($options as $value) {
-                update_option( $value['id'], $_REQUEST[ $value['id'] ] );
-            }
-            foreach ($options as $value) {
+                if($value['type']=='multiselect'){
+                    $value['id'] = str_replace(']','',$value['id']);
+                    $value['id'] = str_replace('[','',$value['id']);
+                }
                 if( isset( $_REQUEST[ $value['id'] ] ) ) {
                     update_option( $value['id'], $_REQUEST[ $value['id'] ]  );
                 }
-                else { delete_option( $value['id'] );
+                else {
+                    delete_option($value['id']);
                 }
             }
             header("Location: YOUR_PAGE_PATH.php&saved=true");
